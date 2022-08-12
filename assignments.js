@@ -7,6 +7,7 @@ function radianToDegree(radian) {
   const degree = parseFloat((radian * (180 / Math.PI)).toFixed(2));
   return degree;
 }
+
 console.log(radianToDegree(10));
 
 //Problem:2  isJavaScriptFile
@@ -22,6 +23,7 @@ function isJavaScriptFile(str) {
     return false;
   }
 }
+
 console.log(isJavaScriptFile("hello.js"));
 
 // Problem 3: oilPrice
@@ -29,8 +31,11 @@ console.log(isJavaScriptFile("hello.js"));
 function oilPrice(diesel, petrol, octane) {
   if (
     typeof diesel != "number" ||
+    diesel < 0 ||
     typeof petrol != "number" ||
-    typeof octane != "number"
+    petrol < 0 ||
+    typeof octane != "number" ||
+    octane < 0
   ) {
     return "Please Enter Valid Input";
   }
@@ -40,13 +45,12 @@ function oilPrice(diesel, petrol, octane) {
   const total = dieselPrice + PetrolPrice + octanePrice;
   return total;
 }
-
 console.log(oilPrice(0, 2, 3));
 
 // Problem 4: publicBusFare
 
 function publicBusFare(people) {
-  if (typeof people != "number") {
+  if (typeof people != "number" || people < 0) {
     return "Please Enter Valid Input";
   }
   const busRemaining = people % 50;
@@ -77,14 +81,5 @@ function isBestFriend(person1, person2) {
     return false;
   }
 }
-
-const myFriend = {
-  name: "abul",
-  friend: "kabul",
-};
-const myFriendsFriend = {
-  name: "kabul",
-  friend: "abul",
-};
 
 console.log(isBestFriend(myFriend, myFriendsFriend));
